@@ -1,14 +1,19 @@
 class Account:
-    def __init__(self,accname,accountno,pin,old_balance,balance):
+    def __init__(self,accname,accountno):
         self.accname = accname
         self.accountno = accountno
-        self.pin = pin
-        self.old_balance = old_balance
-        self.balance = balance
-
-    def  deposit(self):
-         self.old_balance+=self.balance
-         return f"Hello {self.accname}, your deposit is {self.old_balance}"
-    def withdraw(self):
-        self.old_balance-=self.balance
-        return f"Hello {self.accname}, your withdrawal is {self.old_balance}"
+        self.balance = 0
+    def  deposit(self,amount):
+         if amount <=0:
+             return f"Deposit must be positive amount"
+         else:
+             self.balance+=amount    
+             return f"Hello {self.accname}, your deposit is {amount} and your new balance is {self.balance}"
+    def withdraw(self,amount):
+        if amount <=0:
+            return f"Withdrawal amount must be greater than 0"
+        elif amount > self.balance:
+            return f"Hello {self.accname}, your balance is {self.balance} you can't withdraw {amount}"    
+        else:    
+            self.balance-=amount
+            return f"Hello {self.accname}, your withdrawal is {amount} and your new balance is {self.balance}"
