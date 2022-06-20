@@ -9,6 +9,7 @@ class Account:
         self.deposits=[]
         self.withdrawals = []
         self.statement = []
+        self.account2 = 0
         
         
     def  deposit(self,amount):
@@ -94,14 +95,16 @@ class Account:
     def transfer(self,amount,account):
         fee= amount*0.05
         Total=fee+amount
+       
         if amount<0:
             return f"Dear customer {self.accname} your amount is too low"
         elif Total>self.balance:
             return f"Dear customer {self.accname} you balance is {self.balance} and you need atleast {Total}"
         else:
-            self.balance-=Total
-            account.balance+=amount
-            return f"Dear customer you  have sent {amount} to {account} and your new balance is {self.balance}"
+            self.balance-=Total 
+            self.account2+=amount
+
+            return f"Dear customer you  have sent {amount} to {account} and your new balance is {self.balance} and the new account has{self.account2}"
     
         
        
